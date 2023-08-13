@@ -10,40 +10,46 @@ import UIKit
 
 class CharactersCollectionViewDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    let charactersData : [Characters] = [
-        Characters(
-            name: "Ricky Sanches",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
-        Characters(
-            name: "Morty Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"),
-        Characters(
-            name: "Summer Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"),
-        Characters(
-            name: "Beth Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"),
-        Characters(
-            name: "Ricky Sanches",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"),
-        Characters(
-            name: "Morty Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg"),
-        Characters(
-            name: "Summer Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/7.jpeg"),
-        Characters(
-            name: "Beth Smith",
-            status: "Alive",
-            image: "https://rickandmortyapi.com/api/character/avatar/8.jpeg")
-    ]
+    private var charactersData : [Characters] = []
+    
+    func reloadCollectionView(with content: [Characters]) {
+        self.charactersData = content
+    }
+    
+//    let charactersData : [Characters] = [
+//        Characters(
+//            name: "Ricky Sanches",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
+//        Characters(
+//            name: "Morty Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"),
+//        Characters(
+//            name: "Summer Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"),
+//        Characters(
+//            name: "Beth Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"),
+//        Characters(
+//            name: "Ricky Sanches",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"),
+//        Characters(
+//            name: "Morty Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg"),
+//        Characters(
+//            name: "Summer Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/7.jpeg"),
+//        Characters(
+//            name: "Beth Smith",
+//            status: "Alive",
+//            image: "https://rickandmortyapi.com/api/character/avatar/8.jpeg")
+//    ]
     
     var didClick: ((_ character: Characters) -> Void)?
     

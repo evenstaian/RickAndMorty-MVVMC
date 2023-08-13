@@ -12,6 +12,7 @@ import Foundation
 protocol CharactersViewmodeling : AnyObject {
     var delegate: CharactersViewModelDelegate? { get set }
     func viewDidLoad()
+    func getCharactersData()
     func goToDetails(character: Characters)
     func goToFilter()
 }
@@ -21,10 +22,12 @@ class CharactersViewModel : CharactersViewmodeling {
     // Here im using weak to avoid retain cycle
     weak var delegate: CharactersViewModelDelegate?
     
+    private let service : CharactersServicing
     // Creating coordinator abstraction
     private let coordinator : CharactersCoordinating
     
-    init(coordinator: CharactersCoordinating){
+    init(service: CharactersServicing, coordinator: CharactersCoordinating){
+        self.service = service
         self.coordinator = coordinator
     }
     
@@ -32,6 +35,20 @@ class CharactersViewModel : CharactersViewmodeling {
         // Inform assign controller to coordinator getting by delegate
         if let controller = delegate as? CharactersViewController {
             coordinator.controller = controller
+        }
+        
+        getCharactersData()
+    }
+    
+    func getCharactersData(){
+        service.getCharacters(page: nil) { [weak self] result in
+            switch result {
+            case .success(let characters):
+                self?.delegate?.updateCharacterData(characters: characters)
+                break
+            default:
+                break
+            }
         }
     }
     

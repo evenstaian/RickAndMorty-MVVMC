@@ -11,7 +11,8 @@ import UIKit
 enum CharacterFilterFactory {
     static func makeModule(listDelegate: CharactersViewModelDelegate?) -> UIViewController {
         let coordinator = CharacterFilterCoordinator()
-        let viewModel = CharacterFilterViewModel(coordinator: coordinator)
+        let service = CharactersService()
+        let viewModel = CharacterFilterViewModel(service: service, coordinator: coordinator)
         let controller = CharacterFilterViewController(viewModel: viewModel)
         coordinator.controller = controller
         viewModel.delegate = listDelegate

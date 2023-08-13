@@ -12,5 +12,6 @@ import Foundation
 // NSObject was used to allow operator weak and afirm that protocol will used by a class
 protocol CharactersViewModelDelegate : NSObject {
     func showProgress()
+    func updateCharacterData(characters: [Characters])
     func searchCharacter(name: String, status: String)
 }

@@ -9,29 +9,30 @@ import Foundation
 
 protocol CharacterFilterViewModeling : AnyObject {
     var delegate: CharactersViewModelDelegate? { get set }
-    func viewDidLoad()
     func searchCharacter(name: String, status: String)
 }
 
 class CharacterFilterViewModel : CharacterFilterViewModeling {
     weak var delegate: CharactersViewModelDelegate?
     
+    private let service : CharactersServicing
     private let coordinator : CharacterFilterCoordinating
     
-    init(coordinator: CharacterFilterCoordinating){
+    init(service: CharactersServicing, coordinator: CharacterFilterCoordinating){
+        self.service = service
         self.coordinator = coordinator
     }
-    
-    func viewDidLoad(){
-        // Inform assign controller to coordinator getting by delegate
-        if let _ = coordinator.controller {
 
-        }
-    }
-    
     func searchCharacter(name: String, status: String){
-        delegate?.searchCharacter(name: name, status: status)
-        coordinator.returnToList()
+        self.coordinator.returnToList()
+        service.getCharacter(name: name, status: status) { result in
+            switch result {
+            case .success(let characters):
+                self.delegate?.updateCharacterData(characters: characters)
+            case .failure(_):
+                break
+            }
+        }
     }
     
 }

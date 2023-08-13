@@ -130,6 +130,11 @@ extension CharactersViewController : CharactersViewModelDelegate {
         // TODO
     }
     
+    func updateCharacterData(characters: [Characters]){
+        charactersCollectionDataSource.reloadCollectionView(with: characters)
+        self.pageList.collectionView.reloadData()
+    }
+    
     func searchCharacter(name: String, status: String) {
         print(name, status)
     }

@@ -38,7 +38,6 @@ class CharacterFilterViewController: UIViewController, ViewCode {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .filterBackgroundColor
-        viewModel.viewDidLoad()
         setupView()
         setupConstraints()
         setupClicks()
@@ -63,7 +62,7 @@ class CharacterFilterViewController: UIViewController, ViewCode {
     @objc
     func searchCharacter(){
         let inputedName = filterContent.nameInput.text ?? ""
-        let inputedStatus = "alived"
+        let inputedStatus = CharacterStatusType.alive.rawValue
         viewModel.searchCharacter(name: inputedName, status: inputedStatus)
     }
     

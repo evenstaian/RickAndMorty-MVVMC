@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-struct Characters {
-    let name : String
-    let status : String
-    let image : String
-}
-
 class CharacterCell: UICollectionViewCell {
     
     var character : Characters? {
