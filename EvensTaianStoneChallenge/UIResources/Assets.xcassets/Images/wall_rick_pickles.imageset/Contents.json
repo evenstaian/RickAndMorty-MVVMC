@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "wall_rick_pickles.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

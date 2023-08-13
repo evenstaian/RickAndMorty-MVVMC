@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 
 enum CharacterDetailsFactory {
-    static func makeModule() -> UIViewController {
+    static func makeModule(character: Characters) -> UIViewController {
         let coordinator = CharacterDetailsCoordinator()
-        let viewModel = CharacterDetailsViewModel()
+        let viewModel = CharacterDetailsViewModel(character: character)
         let controller = CharacterDetailsViewController(viewModel: viewModel, coordinator: coordinator)
+        
+        viewModel.controller = controller
         
         return controller
     }

@@ -11,8 +11,8 @@ import UIKit
 enum CharactersFactory {
     static func makeModule() -> UIViewController {
         let coordinator = CharactersCoordinator()
-        let viewModel = CharactersViewModel()
-        let controller = CharactersViewController(viewModel: viewModel, coordinator: coordinator)
+        let viewModel = CharactersViewModel(coordinator: coordinator)
+        let controller = CharactersViewController(viewModel: viewModel)
         
         return controller
     }

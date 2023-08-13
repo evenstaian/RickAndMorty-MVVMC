@@ -9,21 +9,33 @@ import UIKit
 
 class CharactersViewController: UIViewController, ViewCode {
     
-    private let viewModel : CharactersViewModel
-    private let coordinator: CharactersCoordinator
+    private let viewModel : CharactersViewmodeling
+    private let charactersCollectionDataSource = CharactersCollectionViewDataSource();
+    private var portraitConstraints : [NSLayoutConstraint]?
+    private var landscapeConstraints : [NSLayoutConstraint]?
     
-    lazy var detailsButton : UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Go to details page", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-        return btn
+    lazy var bannerContent : BannerContent = {
+        let view = BannerContent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var pageDescription : PageDescriptionComponent = {
+        let view = PageDescriptionComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var pageList : PageListComponent = {
+        let view = PageListComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.collectionView.delegate = charactersCollectionDataSource
+        view.collectionView.dataSource = charactersCollectionDataSource
+        return view
     }()
 
-    init(viewModel: CharactersViewModel, coordinator: CharactersCoordinator){
+    init(viewModel: CharactersViewmodeling){
         self.viewModel = viewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,26 +45,92 @@ class CharactersViewController: UIViewController, ViewCode {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.coordinator.controller = self
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = .backgroundColor
+        self.viewModel.delegate = self
+        self.viewModel.viewDidLoad()
         setupView()
         setupConstraints()
+        setupClicks()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let _ = portraitConstraints, let _ = landscapeConstraints {
+            updateConstraintsWithOrientation(portraitConstraints!, landscapeConstraints!)
+        }
+    }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        if let _ = portraitConstraints, let _ = landscapeConstraints {
+            updateConstraintsWithOrientation(portraitConstraints!, landscapeConstraints!)
+        }
+    }
+    
+    
+    func setupClicks(){
+        self.pageDescription.filterBtn.addTarget(self, action: #selector(goToFilter), for: .touchUpInside)
+        charactersCollectionDataSource.didClick = {
+            character in
+            self.viewModel.goToDetails(character: character)
+        }
     }
     
     @objc
-    func goToDetails() {
-        coordinator.goToDetails()
+    func goToFilter() {
+        viewModel.goToFilter()
     }
-    
+
     func setupView() {
-        self.view.addSubview(detailsButton)
+        self.view.addSubview(bannerContent)
+        self.view.addSubview(pageDescription)
+        self.view.addSubview(pageList)
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            detailsButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            detailsButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
+        portraitConstraints = [
+            bannerContent.topAnchor.constraint(equalTo: self.view.topAnchor),
+            bannerContent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            bannerContent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            bannerContent.heightAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) * 0.3),
+            
+            pageDescription.topAnchor.constraint(equalTo: self.bannerContent.bottomAnchor, constant: 20),
+            pageDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            pageDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            pageList.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor, constant: 20),
+            pageList.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            pageList.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            pageList.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ]
+        
+        landscapeConstraints = [
+            bannerContent.topAnchor.constraint(equalTo: self.view.topAnchor),
+            bannerContent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            bannerContent.widthAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.4),
+            bannerContent.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            pageDescription.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            pageDescription.leadingAnchor.constraint(equalTo: bannerContent.trailingAnchor, constant: 20),
+            pageDescription.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            
+            pageList.topAnchor.constraint(equalTo: pageDescription.bottomAnchor, constant: 20),
+            pageList.leadingAnchor.constraint(equalTo: bannerContent.trailingAnchor, constant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.05),
+            pageList.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -(max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.05)),
+            pageList.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ]
+        
+        if let _ = portraitConstraints, let _ = landscapeConstraints {
+            updateConstraintsWithOrientation(portraitConstraints!, landscapeConstraints!)
+        }
     }
 
+}
+
+extension CharactersViewController : CharactersViewModelDelegate {
+    func showProgress() {
+        // TODO
+    }
+    
+    func searchCharacter(name: String, status: String) {
+        print(name, status)
+    }
 }
