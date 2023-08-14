@@ -41,6 +41,7 @@
 		D6BCE3E02A894AFE009D149E /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3DF2A894AFE009D149E /* ApiConstants.swift */; };
 		D6BCE3E22A894B86009D149E /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E12A894B86009D149E /* ApiRequests.swift */; };
 		D6BCE3E62A8979E9009D149E /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E52A8979E9009D149E /* Characters.swift */; };
+		D6BCE3E82A89A70E009D149E /* ServiceMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		D6BCE3DF2A894AFE009D149E /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		D6BCE3E12A894B86009D149E /* ApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		D6BCE3E52A8979E9009D149E /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				D6BCE3B42A86CC87009D149E /* BannerContent.swift */,
 				D6BCE3B62A86D022009D149E /* PageDescriptionComponent.swift */,
 				D6BCE3BF2A8717BC009D149E /* PageListComponent.swift */,
+				D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6BCE38F2A85C97E009D149E /* CharactersFactory.swift in Sources */,
+				D6BCE3E82A89A70E009D149E /* ServiceMessageComponent.swift in Sources */,
 				D6BCE3D42A880A10009D149E /* DetailsHeaderComponent.swift in Sources */,
 				D6BCE3E22A894B86009D149E /* ApiRequests.swift in Sources */,
 				D6BCE3972A85F2C1009D149E /* CharacterDetailsViewController.swift in Sources */,

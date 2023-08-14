@@ -9,11 +9,20 @@ import Foundation
 
 protocol CharacterFilterViewModeling : AnyObject {
     var delegate: CharactersViewModelDelegate? { get set }
-    func searchCharacter(name: String, status: String)
+    func searchCharacter(name: String)
+    func setupStatus(tagStatus: Int)
 }
 
 class CharacterFilterViewModel : CharacterFilterViewModeling {
     weak var delegate: CharactersViewModelDelegate?
+    
+    private var characterStatus = CharacterStatusType.alive
+    
+    let options = [
+        1 : CharacterStatusType.alive,
+        2 : CharacterStatusType.dead,
+        3 : CharacterStatusType.unknown,
+    ]
     
     private let service : CharactersServicing
     private let coordinator : CharacterFilterCoordinating
@@ -22,17 +31,17 @@ class CharacterFilterViewModel : CharacterFilterViewModeling {
         self.service = service
         self.coordinator = coordinator
     }
-
-    func searchCharacter(name: String, status: String){
-        self.coordinator.returnToList()
-        service.getCharacter(name: name, status: status) { result in
-            switch result {
-            case .success(let characters):
-                self.delegate?.updateCharacterData(characters: characters)
-            case .failure(_):
-                break
-            }
+    
+    func setupStatus(tagStatus: Int){
+        if let statusType = options[tagStatus] {
+            print(statusType)
+            characterStatus = statusType
         }
+    }
+
+    func searchCharacter(name: String){
+        self.coordinator.returnToList()
+        self.delegate?.searchCharacter(name: name, status: characterStatus.rawValue)
     }
     
 }

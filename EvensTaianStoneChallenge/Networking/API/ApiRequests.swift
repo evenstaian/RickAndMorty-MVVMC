@@ -40,7 +40,7 @@ class ApiRequests {
         var queryParams : [URLQueryItem] = []
         
         if let page =  page {
-            queryParams.append(URLQueryItem(name: ParamsType.name.rawValue, value: page))
+            queryParams.append(URLQueryItem(name: ParamsType.page.rawValue, value: page))
         }
         
         if let name = name {

@@ -10,27 +10,17 @@ import Foundation
 enum CharacterStatusType: String {
     case alive = "alive"
     case dead = "dead"
-    case unkown = "unknown"
+    case unknown = "unknown"
 }
 
 protocol CharactersServicing : AnyObject {
-    func getCharacters(page: String?, completion: @escaping (Result<[Characters], Error>) -> Void)
-    func getCharacter(name: String, status: String, completion: @escaping (Result<[Characters], Error>) -> Void)
+    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping (Result<[Characters], Error>) -> Void)
 }
 
 class CharactersService : CharactersServicing {
     
-    func getCharacters(page: String? = "1", completion: @escaping (Result<[Characters], Error>) -> Void){
-        ApiRequests().getCharacters(page: page, name: nil, status: nil) { result in
-            DispatchQueue.main.async{
-                completion(result)
-            }
-        }
-    }
-    
-    func getCharacter(name: String, status: String, completion: @escaping (Result<[Characters], Error>) -> Void) {
-        ApiRequests().getCharacters(page: nil, name:name, status: status) { result in
-            print(result)
+    func getCharacters(page: String? = "1", name: String?, status: String?, completion: @escaping (Result<[Characters], Error>) -> Void){
+        ApiRequests().getCharacters(page: page, name: name, status: status) { result in
             DispatchQueue.main.async{
                 completion(result)
             }

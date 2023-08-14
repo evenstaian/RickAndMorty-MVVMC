@@ -17,12 +17,20 @@ class PageListComponent: UIView, ViewCode {
         return layout
     }()
     
+    lazy var refresher : UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.tintColor = .secundaryColor
+        return view
+    }()
+    
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
         cv.register(CharacterCell.self, forCellWithReuseIdentifier: "cell")
+        cv.register(ServiceMessageComponent.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterViewIdentifier")
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.collectionViewLayout = layout
         cv.backgroundColor = .none
+        cv.addSubview(refresher)
         return cv
     }()
     
@@ -36,11 +44,19 @@ class PageListComponent: UIView, ViewCode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func startRefresher() {
+       refresher.beginRefreshing()
+     }
+    
+    func stopRefresher() {
+        refresher.endRefreshing()
+     }
+    
     func setupView() {
         self.addSubview(collectionView)
     }
     
-    func setupConstraints() {
+   func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),

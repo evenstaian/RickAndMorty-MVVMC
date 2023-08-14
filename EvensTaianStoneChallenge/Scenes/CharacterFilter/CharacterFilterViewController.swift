@@ -57,13 +57,39 @@ class CharacterFilterViewController: UIViewController, ViewCode {
     
     func setupClicks(){
         filterContent.filterBtn.addTarget(self, action: #selector(searchCharacter), for: .touchUpInside)
+        filterContent.aliveBtn.addTarget(self, action: #selector(setupStatus), for: .touchUpInside)
+        filterContent.deadBtn.addTarget(self, action: #selector(setupStatus), for: .touchUpInside)
+        filterContent.unknownBtn.addTarget(self, action: #selector(setupStatus), for: .touchUpInside)
+    }
+    
+    @objc
+    func setupStatus(_ sender: UIButton){
+        filterContent.aliveBtn.isSelected = false
+        filterContent.aliveBtn.backgroundColor = .none
+        filterContent.aliveBtn.layer.borderWidth = 2
+        filterContent.aliveBtn.layer.borderColor = UIColor.white.cgColor
+        
+        filterContent.deadBtn.isSelected = false
+        filterContent.deadBtn.backgroundColor = .none
+        filterContent.deadBtn.layer.borderWidth = 2
+        filterContent.deadBtn.layer.borderColor = UIColor.white.cgColor
+        
+        filterContent.unknownBtn.isSelected = false
+        filterContent.unknownBtn.backgroundColor = .none
+        filterContent.unknownBtn.layer.borderWidth = 2
+        filterContent.unknownBtn.layer.borderColor = UIColor.white.cgColor
+        
+        sender.isSelected = true
+        sender.backgroundColor = .white
+        sender.layer.borderWidth = 0
+        
+        viewModel.setupStatus(tagStatus: sender.tag)
     }
     
     @objc
     func searchCharacter(){
         let inputedName = filterContent.nameInput.text ?? ""
-        let inputedStatus = CharacterStatusType.alive.rawValue
-        viewModel.searchCharacter(name: inputedName, status: inputedStatus)
+        viewModel.searchCharacter(name: inputedName)
     }
     
     func setupView() {

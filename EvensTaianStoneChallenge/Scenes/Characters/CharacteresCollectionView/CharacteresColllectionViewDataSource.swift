@@ -16,42 +16,8 @@ class CharactersCollectionViewDataSource: NSObject, UICollectionViewDelegate, UI
         self.charactersData = content
     }
     
-//    let charactersData : [Characters] = [
-//        Characters(
-//            name: "Ricky Sanches",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
-//        Characters(
-//            name: "Morty Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"),
-//        Characters(
-//            name: "Summer Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg"),
-//        Characters(
-//            name: "Beth Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"),
-//        Characters(
-//            name: "Ricky Sanches",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg"),
-//        Characters(
-//            name: "Morty Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg"),
-//        Characters(
-//            name: "Summer Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/7.jpeg"),
-//        Characters(
-//            name: "Beth Smith",
-//            status: "Alive",
-//            image: "https://rickandmortyapi.com/api/character/avatar/8.jpeg")
-//    ]
-    
     var didClick: ((_ character: Characters) -> Void)?
+    var didListFinishScroll: (() -> Void)?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let layout = collectionViewLayout as? UICollectionViewFlowLayout
@@ -75,5 +41,24 @@ class CharactersCollectionViewDataSource: NSObject, UICollectionViewDelegate, UI
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == charactersData.count - 1 {
+            didListFinishScroll?()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            if kind == UICollectionView.elementKindSectionFooter {
+                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterViewIdentifier", for: indexPath) as! ServiceMessageComponent
+                footerView.messageLabel.text = "Buscando mais personagens..."
+                return footerView
+            }
+            return UICollectionReusableView()
+        }
     
 }

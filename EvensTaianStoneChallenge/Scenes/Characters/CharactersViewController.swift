@@ -51,6 +51,7 @@ class CharactersViewController: UIViewController, ViewCode {
         setupView()
         setupConstraints()
         setupClicks()
+        showProgress()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,16 +68,33 @@ class CharactersViewController: UIViewController, ViewCode {
     
     
     func setupClicks(){
-        self.pageDescription.filterBtn.addTarget(self, action: #selector(goToFilter), for: .touchUpInside)
+        pageDescription.filterBtn.addTarget(self, action: #selector(goToFilter), for: .touchUpInside)
+        pageList.refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)
         charactersCollectionDataSource.didClick = {
             character in
             self.viewModel.goToDetails(character: character)
+        }
+        charactersCollectionDataSource.didListFinishScroll = {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.viewModel.getCharactersData(paginate: true, name: nil, status: nil)
+            }
         }
     }
     
     @objc
     func goToFilter() {
         viewModel.goToFilter()
+    }
+    
+    @objc
+    func refreshList() {
+        viewModel.setupFilterCase(isFilter: false)
+        viewModel.getCharactersData(paginate: false, name: nil, status: nil)
+    }
+    
+    func scrollToTop() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        pageList.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
     }
 
     func setupView() {
@@ -127,15 +145,24 @@ class CharactersViewController: UIViewController, ViewCode {
 
 extension CharactersViewController : CharactersViewModelDelegate {
     func showProgress() {
-        // TODO
+        pageList.startRefresher()
+    }
+    
+    func updateFooterMessage(message: String) {
+        if let footerView = pageList.collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionFooter, at: IndexPath(item: 0, section: 0)) as? ServiceMessageComponent {
+            footerView.messageLabel.text = message
+        }
     }
     
     func updateCharacterData(characters: [Characters]){
         charactersCollectionDataSource.reloadCollectionView(with: characters)
-        self.pageList.collectionView.reloadData()
+        pageList.stopRefresher()
+        pageList.collectionView.reloadData()
     }
     
     func searchCharacter(name: String, status: String) {
-        print(name, status)
+        scrollToTop()
+        viewModel.setupFilterCase(isFilter: true)
+        viewModel.getCharactersData(paginate: false, name: name, status: status)
     }
 }

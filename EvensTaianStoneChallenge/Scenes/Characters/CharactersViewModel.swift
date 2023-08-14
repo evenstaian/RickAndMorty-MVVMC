@@ -12,7 +12,8 @@ import Foundation
 protocol CharactersViewmodeling : AnyObject {
     var delegate: CharactersViewModelDelegate? { get set }
     func viewDidLoad()
-    func getCharactersData()
+    func setupFilterCase(isFilter : Bool)
+    func getCharactersData(paginate: Bool, name: String?, status: String?)
     func goToDetails(character: Characters)
     func goToFilter()
 }
@@ -26,6 +27,13 @@ class CharactersViewModel : CharactersViewmodeling {
     // Creating coordinator abstraction
     private let coordinator : CharactersCoordinating
     
+    private var page = 1
+    private var isFilter : Bool = false
+    private var characterName : String? = nil
+    private var characterStatus : String? = nil
+    private var allowNewPage = true
+    private var characters : [Characters] = []
+    
     init(service: CharactersServicing, coordinator: CharactersCoordinating){
         self.service = service
         self.coordinator = coordinator
@@ -37,17 +45,52 @@ class CharactersViewModel : CharactersViewmodeling {
             coordinator.controller = controller
         }
         
-        getCharactersData()
+        setupFilterCase(isFilter: false)
+        getCharactersData(paginate: false)
     }
     
-    func getCharactersData(){
-        service.getCharacters(page: nil) { [weak self] result in
-            switch result {
-            case .success(let characters):
-                self?.delegate?.updateCharacterData(characters: characters)
-                break
-            default:
-                break
+    func setupFilterCase(isFilter: Bool) {
+        self.isFilter = isFilter
+    }
+    
+    func getCharactersData(paginate: Bool = true, name: String? = nil, status: String? = nil){        
+        if self.isFilter {
+            if name != nil {
+                characterName = name
+            }
+            
+            if status != nil {
+                characterStatus = status
+            }
+        } else {
+            characterName = name
+            characterStatus = status
+        }
+        
+        if paginate {
+            page += 1
+        } else {
+            allowNewPage = true
+            page = 1
+            characters = []
+        }
+
+        if allowNewPage {
+            allowNewPage = false
+            service.getCharacters(page: "\(self.page)", name: characterName, status: characterStatus) { [weak self] result in
+                switch result {
+                case .success(let characters):
+                    self?.allowNewPage = true
+                    self?.characters.append(contentsOf: characters)
+                    if let charactersObj = self?.characters {
+                        self?.delegate?.updateCharacterData(characters: charactersObj)
+                    }
+                    break
+                default:
+                    self?.allowNewPage = false
+                    self?.delegate?.updateFooterMessage(message: "Personagens encontrados ✅")
+                    break
+                }
             }
         }
     }
