@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = navigation
         window!.makeKeyAndVisible()
         
-        //TaskStore.makeCache()
+        TaskStore.makeCache()
         return true
     }
 
