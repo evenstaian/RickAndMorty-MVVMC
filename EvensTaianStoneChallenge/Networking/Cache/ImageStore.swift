@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ImageStore {
+class ImageStore{
 
     typealias IsCached = Bool
 

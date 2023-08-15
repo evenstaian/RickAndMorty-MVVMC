@@ -10,7 +10,6 @@ import UIKit
 class CharacterDetailsViewController: UIViewController, ViewCode {
 
     private let viewModel : CharacterDetailsViewModel
-    private let coordinator: CharacterDetailsCoordinator
     
     private var portraitConstraints : [NSLayoutConstraint]?
     private var landscapeConstraints : [NSLayoutConstraint]?
@@ -39,9 +38,8 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
         return view
     }()
 
-    init(viewModel: CharacterDetailsViewModel, coordinator: CharacterDetailsCoordinator){
+    init(viewModel: CharacterDetailsViewModel){
         self.viewModel = viewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,7 +49,6 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.coordinator.controller = self
         self.view.backgroundColor = .backgroundColor
         setupView()
         setupConstraints()
@@ -147,7 +144,7 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
     }
 }
 
-extension CharacterDetailsViewController : CharactersDetailsViewModelDelegate {
+extension CharacterDetailsViewController : CharacterDetailsViewModelDelegate {
     func updateData(image: UIImage?, character: Characters) {
         characterImage.imageView.image = image
         mainInfo.nameLabel.text = character.name

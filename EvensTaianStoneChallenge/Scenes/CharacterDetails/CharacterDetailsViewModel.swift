@@ -10,22 +10,24 @@ import Foundation
 class CharacterDetailsViewModel {
     
     // Here im using weak to avoid retain cycle
-    weak var delegate: CharactersDetailsViewModelDelegate?
+    weak var delegate: CharacterDetailsViewModelDelegate?
     
+    private let service : CharacterDetailsServicing
     private let character : Characters
     
-    init(character: Characters){
+    init(service: CharacterDetailsServicing, character: Characters){
+        self.service = service
         self.character = character
         setupDetailsInfos()
     }
     
     func setupDetailsInfos() {
-        let imageStore = ImageStore()
-        
         if let imageUrl = URL(string: character.image) {
-            imageStore.fetch(for: imageUrl) { image, _ in
-                DispatchQueue.main.async {
-                    self.delegate?.updateData(image: image, character: self.character)
+            service.getImage(for: imageUrl) { [weak self] image in
+                if let character = self?.character {
+                    DispatchQueue.main.async {
+                        self?.delegate?.updateData(image: image, character: character)
+                    }
                 }
             }
         }

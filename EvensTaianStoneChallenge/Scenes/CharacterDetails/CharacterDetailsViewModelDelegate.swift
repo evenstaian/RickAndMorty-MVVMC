@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-protocol CharactersDetailsViewModelDelegate : NSObject {
+protocol CharacterDetailsViewModelDelegate : NSObject {
     func updateData(image: UIImage?, character: Characters)
 }

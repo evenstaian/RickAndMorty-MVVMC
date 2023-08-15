@@ -10,8 +10,4 @@ import UIKit
 
 class CharacterDetailsCoordinator {
     weak var controller: UIViewController?
-    
-    func dismiss(){
-        // TODO
-    }
 }

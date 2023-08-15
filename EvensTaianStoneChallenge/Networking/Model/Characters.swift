@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Characters : Decodable {
+struct Characters : Decodable, Equatable {
     let id : Int
     let name : String
     let status : String
@@ -18,7 +18,7 @@ struct Characters : Decodable {
     let location : CharacterLocation
 }
 
-struct CharacterLocation : Decodable {
+struct CharacterLocation : Decodable, Equatable {
     let name : String
     let url : String
 }

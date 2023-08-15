@@ -6,27 +6,64 @@
 //
 
 import XCTest
+@testable import EvensTaianStoneChallenge
 
 class CharacterDetailsViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    lazy var sut : CharacterDetailsViewModel  = {
+        let viewModel = CharacterDetailsViewModel(service: service, character: mockCharacter())
+        viewModel.delegate = delegate
+        return viewModel
+    }()
+    
+    let service = CharacterDetailsServiceSpy()
+    let delegate = CharacterDetailsViewModelDelegateSpy()
+    let imageUrl = "mockImage"
+    
+    private func mockCharacter() -> Characters {
+        return Characters(id: 10, name: "", status: "", species: "", gender: "", image: imageUrl, origin: CharacterLocation(name: "", url: ""), location: CharacterLocation(name: "", url: ""))
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testSetupDetailsInfos_shouldCallDelegateUpdateData() {
+        let expec = expectation(description: "wait for getImage")
+        
+        sut.setupDetailsInfos()
+        
+        delegate.expectedCompletion = {
+            expec.fulfill()
+            XCTAssertTrue(self.delegate.didCallUpdateData)
+        }
+        
+        service.fullfillCompletion()
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class CharacterDetailsServiceSpy : CharacterDetailsServicing {
+    var expectedCompletion : ((UIImage?) -> Void)?
+    var expectedImage : UIImage?
+    
+    func getImage(for url: URL, completion: @escaping (UIImage?) -> Void) {
+        expectedCompletion = { image in
+            completion(image)
         }
     }
+    
+    func fullfillCompletion(){
+        expectedCompletion?(expectedImage)
+    }
+}
 
+class CharacterDetailsViewModelDelegateSpy : NSObject, CharacterDetailsViewModelDelegate {
+    private(set) var didCallUpdateData = false
+    var expectedCompletion : (() -> Void)?
+    
+    func updateData(image: UIImage?, character: Characters) {
+        didCallUpdateData = true
+        fullFillCompletion()
+    }
+    
+    func fullFillCompletion(){
+        expectedCompletion?()
+    }
 }

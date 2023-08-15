@@ -24,11 +24,9 @@ class CharacterFilterViewModel : CharacterFilterViewModeling {
         3 : CharacterStatusType.unknown,
     ]
     
-    private let service : CharactersServicing
     private let coordinator : CharacterFilterCoordinating
     
-    init(service: CharactersServicing, coordinator: CharacterFilterCoordinating){
-        self.service = service
+    init(coordinator: CharacterFilterCoordinating){
         self.coordinator = coordinator
     }
     

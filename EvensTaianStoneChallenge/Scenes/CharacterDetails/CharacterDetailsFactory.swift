@@ -10,9 +10,9 @@ import UIKit
 
 enum CharacterDetailsFactory {
     static func makeModule(character: Characters) -> UIViewController {
-        let coordinator = CharacterDetailsCoordinator()
-        let viewModel = CharacterDetailsViewModel(character: character)
-        let controller = CharacterDetailsViewController(viewModel: viewModel, coordinator: coordinator)
+        let service = CharacterDetailsService()
+        let viewModel = CharacterDetailsViewModel(service: service, character: character)
+        let controller = CharacterDetailsViewController(viewModel: viewModel)
         
         viewModel.delegate = controller
         
