@@ -10,7 +10,7 @@ import Foundation
 class CharacterDetailsViewModel {
     
     // Here im using weak to avoid retain cycle
-    weak var controller: CharacterDetailsViewController?
+    weak var delegate: CharactersDetailsViewModelDelegate?
     
     private let character : Characters
     
@@ -25,7 +25,7 @@ class CharacterDetailsViewModel {
         if let imageUrl = URL(string: character.image) {
             imageStore.fetch(for: imageUrl) { image, _ in
                 DispatchQueue.main.async {
-                    self.controller?.characterImage.imageView.image = image
+                    self.delegate?.updateData(image: image, character: self.character)
                 }
             }
         }

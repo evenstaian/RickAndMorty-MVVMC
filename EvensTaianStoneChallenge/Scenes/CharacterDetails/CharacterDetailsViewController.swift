@@ -15,14 +15,6 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
     private var portraitConstraints : [NSLayoutConstraint]?
     private var landscapeConstraints : [NSLayoutConstraint]?
     
-    lazy var pageName : UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "Character Details"
-        lbl.textColor = .white
-        return lbl
-    }()
-    
     lazy var detailsHeader : DetailsHeaderComponent = {
         let view = DetailsHeaderComponent()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +23,18 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
     
     lazy var characterImage : CharacterImageComponent  = {
         let view = CharacterImageComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var mainInfo : MainInfoComponent = {
+        let view = MainInfoComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var secondaryInfo : SecondaryInfoComponent = {
+        let view = SecondaryInfoComponent()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -51,18 +55,47 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
         self.view.backgroundColor = .backgroundColor
         setupView()
         setupConstraints()
+        updateAligments()
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         if let _ = portraitConstraints, let _ = landscapeConstraints {
             updateConstraintsWithOrientation(portraitConstraints!, landscapeConstraints!)
+            updateAligments()
+        }
+    }
+    
+    private func updateAligments() {
+        if isPortrait() {
+            mainInfo.nameLabel.textAlignment = .center
+            mainInfo.specieLabel.textAlignment = .center
+            mainInfo.statusLabel.textAlignment = .center
+            
+            secondaryInfo.genderComponent.label.textAlignment = .left
+            secondaryInfo.originComponent.label.textAlignment = .left
+            secondaryInfo.lastLocComponent.label.textAlignment = .left
+            secondaryInfo.genderComponent.value.textAlignment = .left
+            secondaryInfo.originComponent.value.textAlignment = .left
+            secondaryInfo.lastLocComponent.value.textAlignment = .left
+        } else {
+            mainInfo.nameLabel.textAlignment = .left
+            mainInfo.specieLabel.textAlignment = .left
+            mainInfo.statusLabel.textAlignment = .left
+            
+            secondaryInfo.genderComponent.label.textAlignment = .center
+            secondaryInfo.originComponent.label.textAlignment = .center
+            secondaryInfo.lastLocComponent.label.textAlignment = .center
+            secondaryInfo.genderComponent.value.textAlignment = .center
+            secondaryInfo.originComponent.value.textAlignment = .center
+            secondaryInfo.lastLocComponent.value.textAlignment = .center
         }
     }
     
     func setupView() {
         self.view.addSubview(detailsHeader)
         self.view.addSubview(characterImage)
-        self.view.addSubview(pageName)
+        self.view.addSubview(mainInfo)
+        self.view.addSubview(secondaryInfo)
     }
     
     func setupConstraints() {
@@ -77,8 +110,14 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
             characterImage.widthAnchor.constraint(equalToConstant: 180),
             characterImage.heightAnchor.constraint(equalToConstant: 180),
             
-            pageName.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            pageName.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            mainInfo.topAnchor.constraint(equalTo: characterImage.bottomAnchor),
+            mainInfo.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            mainInfo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            secondaryInfo.topAnchor.constraint(equalTo: mainInfo.bottomAnchor, constant: 20),
+            secondaryInfo.leadingAnchor.constraint(equalTo: mainInfo.leadingAnchor),
+            secondaryInfo.trailingAnchor.constraint(equalTo: mainInfo.trailingAnchor),
+            secondaryInfo.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ]
         
         landscapeConstraints = [
@@ -92,12 +131,40 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
             characterImage.widthAnchor.constraint(equalToConstant: 180),
             characterImage.heightAnchor.constraint(equalToConstant: 180),
             
-            pageName.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            pageName.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            mainInfo.centerYAnchor.constraint(equalTo:  characterImage.centerYAnchor),
+            mainInfo.leadingAnchor.constraint(equalTo: characterImage.trailingAnchor, constant: 20),
+            mainInfo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            secondaryInfo.topAnchor.constraint(equalTo: mainInfo.bottomAnchor, constant: 30),
+            secondaryInfo.leadingAnchor.constraint(equalTo: detailsHeader.trailingAnchor),
+            secondaryInfo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            secondaryInfo.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ]
         
         if let _ = portraitConstraints, let _ = landscapeConstraints {
             updateConstraintsWithOrientation(portraitConstraints!, landscapeConstraints!)
+        }
+    }
+}
+
+extension CharacterDetailsViewController : CharactersDetailsViewModelDelegate {
+    func updateData(image: UIImage?, character: Characters) {
+        characterImage.imageView.image = image
+        mainInfo.nameLabel.text = character.name
+        mainInfo.specieLabel.text = character.species
+        mainInfo.statusLabel.text = character.status
+        
+        secondaryInfo.genderComponent.value.text = character.gender
+        secondaryInfo.originComponent.value.text = character.origin.name
+        secondaryInfo.lastLocComponent.value.text = character.location.name
+        
+        switch character.status.lowercased() {
+        case CharacterStatusType.alive.rawValue:
+            mainInfo.statusLabel.textColor = .aliveColor
+        case CharacterStatusType.dead.rawValue:
+            mainInfo.statusLabel.textColor = .deadColor
+        default:
+            mainInfo.statusLabel.textColor = .unknownColor
         }
     }
 }

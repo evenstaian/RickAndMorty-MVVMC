@@ -10,9 +10,16 @@ import UIKit
 
 class FilterContentComponent : UIView, ViewCode {
     
+    lazy var scrollView : UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
+    
     lazy var filterContent : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
         return view
     }()
     
@@ -125,29 +132,31 @@ class FilterContentComponent : UIView, ViewCode {
     }
     
     func setupView() {
-        self.addSubview(filterContent)
         statusStackView.addArrangedSubview(aliveBtn)
         statusStackView.addArrangedSubview(deadBtn)
         statusStackView.addArrangedSubview(unknownBtn)
-        filterContent.addSubview(characterNameTitle)
-        filterContent.addSubview(nameInput)
-        filterContent.addSubview(inputBorder)
-        filterContent.addSubview(characterStatusTitle)
-        filterContent.addSubview(filterBtn)
-        filterContent.addSubview(statusStackView)
+        scrollView.addSubview(filterContent)
+        scrollView.addSubview(characterNameTitle)
+        scrollView.addSubview(nameInput)
+        scrollView.addSubview(inputBorder)
+        scrollView.addSubview(characterStatusTitle)
+        scrollView.addSubview(filterBtn)
+        scrollView.addSubview(statusStackView)
+        addSubview(scrollView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            filterContent.topAnchor.constraint(equalTo: self.topAnchor),
-            filterContent.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            filterContent.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            filterContent.bottomAnchor.constraint(equalTo: bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            characterNameTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            characterNameTitle.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
             characterNameTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            characterNameTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             
             nameInput.topAnchor.constraint(equalTo: self.characterNameTitle.bottomAnchor, constant: 20),
             nameInput.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
@@ -163,14 +172,15 @@ class FilterContentComponent : UIView, ViewCode {
             characterStatusTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             characterStatusTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             
-            statusStackView.topAnchor.constraint(equalTo: characterStatusTitle.bottomAnchor, constant: 40),
+            statusStackView.topAnchor.constraint(equalTo: characterStatusTitle.bottomAnchor, constant: 25),
             statusStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             statusStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             statusStackView.heightAnchor.constraint(equalToConstant: 60),
             
+            filterBtn.topAnchor.constraint(equalTo: self.statusStackView.bottomAnchor, constant: 25),
             filterBtn.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             filterBtn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            filterBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
+            filterBtn.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -100),
             filterBtn.heightAnchor.constraint(equalToConstant: 60)
         ])
     }

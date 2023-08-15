@@ -27,4 +27,8 @@ extension UIViewController {
                 self.view.layoutIfNeeded()
             }
         }
+    
+    public func isPortrait() -> Bool{
+        return UIDevice.current.orientation.isPortrait
+    }
 }

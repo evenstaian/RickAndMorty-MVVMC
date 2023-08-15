@@ -14,7 +14,7 @@ enum CharacterDetailsFactory {
         let viewModel = CharacterDetailsViewModel(character: character)
         let controller = CharacterDetailsViewController(viewModel: viewModel, coordinator: coordinator)
         
-        viewModel.controller = controller
+        viewModel.delegate = controller
         
         return controller
     }

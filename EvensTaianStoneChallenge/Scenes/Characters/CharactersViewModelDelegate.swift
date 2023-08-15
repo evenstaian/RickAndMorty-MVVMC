@@ -14,5 +14,5 @@ protocol CharactersViewModelDelegate : NSObject {
     func showProgress()
     func updateFooterMessage(message: String)
     func updateCharacterData(characters: [Characters])
-    func searchCharacter(name: String, status: String)
+    func searchCharacter(name: String, status: String?)
 }

@@ -160,9 +160,9 @@ extension CharactersViewController : CharactersViewModelDelegate {
         pageList.collectionView.reloadData()
     }
     
-    func searchCharacter(name: String, status: String) {
+    func searchCharacter(name: String, status: String?) {
         scrollToTop()
-        viewModel.setupFilterCase(isFilter: true)
+        viewModel.setupFilterCase(isFilter: (status != nil ? true : false))
         viewModel.getCharactersData(paginate: false, name: name, status: status)
     }
 }

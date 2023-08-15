@@ -16,7 +16,7 @@ protocol CharacterFilterViewModeling : AnyObject {
 class CharacterFilterViewModel : CharacterFilterViewModeling {
     weak var delegate: CharactersViewModelDelegate?
     
-    private var characterStatus = CharacterStatusType.alive
+    private var characterStatus : CharacterStatusType?
     
     let options = [
         1 : CharacterStatusType.alive,
@@ -34,14 +34,13 @@ class CharacterFilterViewModel : CharacterFilterViewModeling {
     
     func setupStatus(tagStatus: Int){
         if let statusType = options[tagStatus] {
-            print(statusType)
             characterStatus = statusType
         }
     }
 
     func searchCharacter(name: String){
         self.coordinator.returnToList()
-        self.delegate?.searchCharacter(name: name, status: characterStatus.rawValue)
+        self.delegate?.searchCharacter(name: name, status: characterStatus?.rawValue)
     }
     
 }

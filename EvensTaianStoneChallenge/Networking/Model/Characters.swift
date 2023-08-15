@@ -12,6 +12,7 @@ struct Characters : Decodable {
     let name : String
     let status : String
     let species : String
+    let gender : String
     let image : String
     let origin : CharacterLocation
     let location : CharacterLocation

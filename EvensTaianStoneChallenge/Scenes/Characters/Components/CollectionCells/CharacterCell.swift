@@ -23,6 +23,15 @@ class CharacterCell: UICollectionViewCell {
                     }
                 }
             }
+            
+            switch character.status.lowercased() {
+            case CharacterStatusType.alive.rawValue:
+                status.textColor = .aliveColor
+            case CharacterStatusType.dead.rawValue:
+                status.textColor = .deadColor
+            default:
+                status.textColor = .unknownColor
+            }
         }
     }
     

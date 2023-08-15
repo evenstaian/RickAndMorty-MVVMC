@@ -83,6 +83,8 @@ class CharacterFilterViewController: UIViewController, ViewCode {
         sender.backgroundColor = .white
         sender.layer.borderWidth = 0
         
+        filterContent.nameInput.resignFirstResponder()
+        
         viewModel.setupStatus(tagStatus: sender.tag)
     }
     

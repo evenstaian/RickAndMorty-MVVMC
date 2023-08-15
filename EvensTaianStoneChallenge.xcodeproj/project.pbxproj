@@ -42,6 +42,10 @@
 		D6BCE3E22A894B86009D149E /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E12A894B86009D149E /* ApiRequests.swift */; };
 		D6BCE3E62A8979E9009D149E /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E52A8979E9009D149E /* Characters.swift */; };
 		D6BCE3E82A89A70E009D149E /* ServiceMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */; };
+		D6BCE3EA2A8A97C4009D149E /* MainInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3E92A8A97C3009D149E /* MainInfoComponent.swift */; };
+		D6BCE3EC2A8AA10E009D149E /* SecondaryInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3EB2A8AA10E009D149E /* SecondaryInfoComponent.swift */; };
+		D6BCE3EE2A8AA4F1009D149E /* CharacterDetailsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3ED2A8AA4F1009D149E /* CharacterDetailsViewModelDelegate.swift */; };
+		D6BCE3F02A8AAE15009D149E /* LabelAndValueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3EF2A8AAE14009D149E /* LabelAndValueComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,10 @@
 		D6BCE3E12A894B86009D149E /* ApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		D6BCE3E52A8979E9009D149E /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageComponent.swift; sourceTree = "<group>"; };
+		D6BCE3E92A8A97C3009D149E /* MainInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoComponent.swift; sourceTree = "<group>"; };
+		D6BCE3EB2A8AA10E009D149E /* SecondaryInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryInfoComponent.swift; sourceTree = "<group>"; };
+		D6BCE3ED2A8AA4F1009D149E /* CharacterDetailsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModelDelegate.swift; sourceTree = "<group>"; };
+		D6BCE3EF2A8AAE14009D149E /* LabelAndValueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndValueComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +192,7 @@
 				D6BCE3962A85F2C1009D149E /* CharacterDetailsViewController.swift */,
 				D6BCE3982A85F30F009D149E /* CharacterDetailsViewModel.swift */,
 				D6BCE39A2A85F350009D149E /* CharacterDetailsCoordinator.swift */,
+				D6BCE3ED2A8AA4F1009D149E /* CharacterDetailsViewModelDelegate.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -212,6 +221,9 @@
 			children = (
 				D6BCE3D32A880A10009D149E /* DetailsHeaderComponent.swift */,
 				D6BCE3D82A8840BA009D149E /* CharacterImageComponent.swift */,
+				D6BCE3E92A8A97C3009D149E /* MainInfoComponent.swift */,
+				D6BCE3EB2A8AA10E009D149E /* SecondaryInfoComponent.swift */,
+				D6BCE3EF2A8AAE14009D149E /* LabelAndValueComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -466,6 +478,8 @@
 				D6BCE3C92A8739A7009D149E /* CharacterFilterFactory.swift in Sources */,
 				D6BCE3CB2A873D4A009D149E /* CharacterFilterViewController.swift in Sources */,
 				D6BCE3892A85C84E009D149E /* CharactersViewController.swift in Sources */,
+				D6BCE3EA2A8A97C4009D149E /* MainInfoComponent.swift in Sources */,
+				D6BCE3EE2A8AA4F1009D149E /* CharacterDetailsViewModelDelegate.swift in Sources */,
 				D6BCE3DD2A885752009D149E /* CharactersService.swift in Sources */,
 				D6BCE3E62A8979E9009D149E /* Characters.swift in Sources */,
 				D6BCE3952A85F280009D149E /* ViewCode.swift in Sources */,
@@ -476,6 +490,7 @@
 				D6BCE3C62A871CB6009D149E /* CharacterCell.swift in Sources */,
 				D6BCE3E02A894AFE009D149E /* ApiConstants.swift in Sources */,
 				D6BCE3992A85F30F009D149E /* CharacterDetailsViewModel.swift in Sources */,
+				D6BCE3EC2A8AA10E009D149E /* SecondaryInfoComponent.swift in Sources */,
 				D6BCE3D02A874AF1009D149E /* CharacterFilterCoordinator.swift in Sources */,
 				D6BCE3BE2A871633009D149E /* ImageStore.swift in Sources */,
 				D6BCE3712A85C60E009D149E /* AppDelegate.swift in Sources */,
@@ -488,6 +503,7 @@
 				D6BCE3C02A8717BC009D149E /* PageListComponent.swift in Sources */,
 				D6BCE3D92A8840BA009D149E /* CharacterImageComponent.swift in Sources */,
 				D6BCE3B52A86CC87009D149E /* BannerContent.swift in Sources */,
+				D6BCE3F02A8AAE15009D149E /* LabelAndValueComponent.swift in Sources */,
 				D6BCE3D22A874C59009D149E /* CharacterFilterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
