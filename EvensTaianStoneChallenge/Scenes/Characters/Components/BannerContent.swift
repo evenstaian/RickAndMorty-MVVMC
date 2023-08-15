@@ -17,6 +17,7 @@ class BannerContent : UIView, ViewCode {
         img.backgroundColor = .gray
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
+        img.accessibilityIdentifier = "Banner"
         return img
     }()
     

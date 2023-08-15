@@ -76,6 +76,7 @@ class CharacterCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        self.accessibilityIdentifier = "collectionViewCell"
         setupViews()
         setupConstraints()
     }

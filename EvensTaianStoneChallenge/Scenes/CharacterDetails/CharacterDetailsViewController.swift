@@ -17,6 +17,7 @@ class CharacterDetailsViewController: UIViewController, ViewCode {
     lazy var detailsHeader : DetailsHeaderComponent = {
         let view = DetailsHeaderComponent()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = "detailsHeader"
         return view
     }()
     

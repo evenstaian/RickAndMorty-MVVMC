@@ -25,6 +25,7 @@ class PageDescriptionComponent : UIView, ViewCode {
         image?.withTintColor(.primaryColor, renderingMode: .automatic)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(image, for: .normal)
+        btn.accessibilityIdentifier = "Filtro"
         return btn
     }()
     
