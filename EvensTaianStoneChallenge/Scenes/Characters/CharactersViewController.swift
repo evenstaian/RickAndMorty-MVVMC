@@ -162,7 +162,8 @@ extension CharactersViewController : CharactersViewModelDelegate {
     
     func searchCharacter(name: String, status: String?) {
         scrollToTop()
-        viewModel.setupFilterCase(isFilter: (status != nil ? true : false))
+        let isFilter = !name.isEmpty() || status != nil ? true : false
+        viewModel.setupFilterCase(isFilter: isFilter)
         viewModel.getCharactersData(paginate: false, name: name, status: status)
     }
 }

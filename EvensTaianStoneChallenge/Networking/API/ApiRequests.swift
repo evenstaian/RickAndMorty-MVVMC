@@ -23,6 +23,7 @@ class ApiRequests {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
             "Content-Type" : "application/json"]
+        config.requestCachePolicy = .returnCacheDataElseLoad
         return config
     }
 
