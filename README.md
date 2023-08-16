@@ -10,4 +10,6 @@ Neste projeto escolhi o __MVVM-C__ como padrão de arquitetura, isso me permitiu
 -  Dependency Inversion (Princípio da inversão da dependência)
 
 Figma
+<img src="./readmeResources/images/figma.png" width="200" />
+
 ![Figma](./readmeResources/images/figma.png)
