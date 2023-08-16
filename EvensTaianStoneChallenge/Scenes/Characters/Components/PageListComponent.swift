@@ -10,10 +10,13 @@ import UIKit
 
 class PageListComponent: UIView, ViewCode {
     
+    let klayoutLineSpacing : CGFloat = 10
+    let klayoutInterItmSpacing : CGFloat = 10
+    
     lazy var layout : UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = klayoutLineSpacing
+        layout.minimumInteritemSpacing = klayoutInterItmSpacing
         return layout
     }()
     

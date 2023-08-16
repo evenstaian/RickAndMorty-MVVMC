@@ -10,12 +10,19 @@ import UIKit
 
 class ServiceMessageComponent: UICollectionReusableView, ViewCode {
     
+    let kMessageLabelFontSize : CGFloat = 12
+    let kMessageLabelTopMargin : CGFloat = 20
+    let kMessageLabelLeadingMargin : CGFloat = 20
+    let kMessageLabelTrailingMargin : CGFloat = -20
+    let kMessageLabelBottomMargin : CGFloat = -20
+    let kMessageLabelHeight : CGFloat = 50
+    
     lazy var messageLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textAlignment = .center
         lbl.textColor = .primaryColor
-        lbl.font = .systemFont(ofSize: 12)
+        lbl.font = .systemFont(ofSize: kMessageLabelFontSize)
         return lbl
     }()
     
@@ -35,11 +42,11 @@ class ServiceMessageComponent: UICollectionReusableView, ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            messageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            messageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-            messageLabel.heightAnchor.constraint(equalToConstant: 50)
+            messageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: kMessageLabelTopMargin),
+            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: kMessageLabelLeadingMargin),
+            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: kMessageLabelTrailingMargin),
+            messageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: kMessageLabelBottomMargin),
+            messageLabel.heightAnchor.constraint(equalToConstant: kMessageLabelHeight)
         ])
     }
 }

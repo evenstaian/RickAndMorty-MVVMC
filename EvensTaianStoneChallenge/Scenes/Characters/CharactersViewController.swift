@@ -14,6 +14,16 @@ class CharactersViewController: UIViewController, ViewCode {
     private var portraitConstraints : [NSLayoutConstraint]?
     private var landscapeConstraints : [NSLayoutConstraint]?
     
+    let kPortraitBannerContentHeightMultiply = 0.3
+    let kPortraitPageDescriptionTopMargin : CGFloat = 20
+    let kPortraitPageDescriptionLeadingMargin : CGFloat = 20
+    let kPortraitPageDescriptionTrailingMargin : CGFloat = -20
+    let kPortraitErrorComponentLeadingMargin : CGFloat = 20
+    let kPortraitErrorComponentTrailingMargin : CGFloat = -20
+    let kPortraitPageListTopMargin : CGFloat = 20
+    let kPortraitPageListLeadingMargin : CGFloat = 20
+    let kPortraitPageListTrailingMargin : CGFloat = -20
+    
     lazy var bannerContent : BannerContent = {
         let view = BannerContent()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -119,20 +129,20 @@ class CharactersViewController: UIViewController, ViewCode {
             bannerContent.topAnchor.constraint(equalTo: self.view.topAnchor),
             bannerContent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bannerContent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            bannerContent.heightAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) * 0.3),
+            bannerContent.heightAnchor.constraint(equalToConstant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) * kPortraitBannerContentHeightMultiply),
             
-            pageDescription.topAnchor.constraint(equalTo: self.bannerContent.bottomAnchor, constant: 20),
-            pageDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            pageDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            pageDescription.topAnchor.constraint(equalTo: self.bannerContent.bottomAnchor, constant: kPortraitPageDescriptionTopMargin),
+            pageDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: kPortraitPageDescriptionLeadingMargin),
+            pageDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: kPortraitPageDescriptionTrailingMargin),
             
             errorComponent.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor),
-            errorComponent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            errorComponent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            errorComponent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: kPortraitErrorComponentLeadingMargin),
+            errorComponent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: kPortraitErrorComponentTrailingMargin),
             errorComponent.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
-            pageList.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor, constant: 20),
-            pageList.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            pageList.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            pageList.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor, constant: kPortraitPageListTopMargin),
+            pageList.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: kPortraitPageListLeadingMargin),
+            pageList.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: kPortraitPageListTrailingMargin),
             pageList.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ]
         

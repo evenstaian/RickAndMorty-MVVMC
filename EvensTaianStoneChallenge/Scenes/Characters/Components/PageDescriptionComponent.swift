@@ -10,11 +10,13 @@ import UIKit
 
 class PageDescriptionComponent : UIView, ViewCode {
     
+    let kTitleFontSize : CGFloat = 18
+    
     lazy var titleLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "Personagens"
-        lbl.font = .systemFont(ofSize: 18)
+        lbl.font = .systemFont(ofSize: kTitleFontSize)
         lbl.textColor = .primaryColor
         return lbl
     }()
