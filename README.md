@@ -11,12 +11,12 @@ Neste projeto escolhi o __MVVM-C__ como padrão de arquitetura, isso me permitiu
 
 ### UX/UI
 
-Para visualizar como o projeto deveria parecer, como seria o fluxo das telas e das informações, desenhei o layout da futura aplicação utilizando o figma. Esta visualização prévia foi de grande ajudar pra saber o layout que eu codificaria usando ViewCode.
+Para visualizar como o projeto deveria parecer e como deveria funcionar o fluxo das telas e das informações, desenhei o layout da futura aplicação utilizando o figma. Esta visualização prévia foi de grande ajuda pra saber que layout que eu codificaria usando ViewCode.
 
 O design do projeto pode ser encontrado em: 
 https://www.figma.com/file/q4ZLtYMfTr1zz5T1VlswhC/Rick-And-Morty-App?type=design&node-id=0%3A1&mode=design&t=jC60kytOU3eVRO1s-1
 
-<img src="./readmeResources/images/figma.png" width="500" height="auto"/>
+<img src="./readmeResources/images/figma.png" width="600" height="auto"/>
 
 ### Abstrações e Objetos Concretos
 
