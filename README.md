@@ -62,8 +62,29 @@ class CharacterViewModel {
 A viewModel não espera pela implementação concreta, e sim pela abstração dela, representada pelo protocol _CharactersServicing_. Isso permite que uma eventual manutenção aconteça sem que a view model seja drasticamente afetada. E no contexto de testes, permite criar _Spies_ que possam criar implementações especificas ao testar o sut.
 ### Suporte a Orientação de tela
 
+Esta aplicação remodela o layout sempre que a orientação é mudada. Para isso se tornou necessário sempre crar _NSLayoutsContraints_ especificos para _Portrait_ e _Landscape_ e criar uma manager que ativasse e desativasse essas contraints
+
 <img src="./readmeResources/images/orientation.gif" width="600" height="auto"/>
 
 ### Suporte a DarkMode
 
+Cada cor utilizada na aplicação tem sua versão em Darkmode também.
+
+<pre>
+private static func choiceColorWithApparence(_ normalColor: UIColor, _ darkColor: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { (traits) -> UIColor in
+                return traits.userInterfaceStyle == .dark ?
+                   darkColor : normalColor
+            }
+        } else {
+            return normalColor
+        }
+    }
+</pre>
+
 <img src="./readmeResources/images/darkmode.gif" width="600" height="auto"/>
+
+### Network Cache
+
+Fiz controle de cache tanto para as imagens baixadas, quanto para as listas de personagens acessadas. Funcionalmente, to requisição acessa _URLCache_ para verificar se a resposta já se encontra em cache, e somente depois faz a requisição externa.
