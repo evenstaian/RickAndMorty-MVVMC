@@ -16,4 +16,30 @@ Para visualizar como o projeto deveria parecer, como seria o fluxo das telas e d
 O design do projeto pode ser encontrado em: 
 https://www.figma.com/file/q4ZLtYMfTr1zz5T1VlswhC/Rick-And-Morty-App?type=design&node-id=0%3A1&mode=design&t=jC60kytOU3eVRO1s-1
 
-<img src="./readmeResources/images/figma.png" width="300" height="auto"/>
+<img src="./readmeResources/images/figma.png" width="500" height="auto"/>
+
+### Abstrações e Objetos Concretos
+
+Pensando na progressão de manutenções e independencia das classes ao serem testadas, todas as dependencias são feitas por meio de abstrações e não pelo objeto concreto em si. Além do mais, isso respeita o principio de Liskov e o da Inversão de Dependencia. Por exemplo, no projeto isso pode ser visto em:
+
+<pre>
+```swift
+protocol CharactersServicing : AnyObject {
+    func getCharacters()
+}
+
+class CharactersService : CharactersServicing {
+    func getCharacters(){
+    }
+}
+
+class CharacterViewModel {
+    private let service : CharacterDetailsServicing
+    
+    init(service: CharacterServicing){
+        self.service = service
+}
+```
+</pre>
+
+A viewModel não espera pela implementação concreta, e sim pela abstração dela, representada pelo protocol _CharactersServicing_. Isso permite que uma eventual manutenção aconteça sem que a view model seja drasticamente afetada. E no contexto de testes, permite criar _Spies_ que possam criar implementações especificas ao testar o sut.
