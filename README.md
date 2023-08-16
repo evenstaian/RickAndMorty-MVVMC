@@ -63,3 +63,7 @@ A viewModel não espera pela implementação concreta, e sim pela abstração de
 ### Suporte a Orientação de tela
 
 <img src="./readmeResources/images/orientation.gif" width="600" height="auto"/>
+
+### Suporte a DarkMode
+
+<img src="./readmeResources/images/darkmode.gif" width="600" height="auto"/>
