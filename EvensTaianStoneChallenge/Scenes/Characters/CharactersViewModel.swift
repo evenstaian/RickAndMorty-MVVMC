@@ -86,9 +86,15 @@ class CharactersViewModel : CharactersViewmodeling {
                         self?.delegate?.updateCharacterData(characters: charactersObj)
                     }
                     break
-                default:
-                    self?.allowNewPage = false
-                    self?.delegate?.updateFooterMessage(message: "Personagens encontrados ✅")
+                case .failure(let error):
+                    switch error {
+                    case .noConnection:
+                        self?.delegate?.showError(message: "Verifique sua internet")
+                    default:
+                        self?.allowNewPage = false
+                        self?.delegate?.updateFooterMessage(message: "Personagens encontrados ✅")
+                        break
+                    }
                     break
                 }
             }

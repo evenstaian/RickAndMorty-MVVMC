@@ -14,12 +14,12 @@ enum CharacterStatusType: String {
 }
 
 protocol CharactersServicing : AnyObject {
-    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping (Result<[Characters], Error>) -> Void)
+    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping (Result<[Characters], NetworkError>) -> Void)
 }
 
 class CharactersService : CharactersServicing {
     
-    func getCharacters(page: String? = "1", name: String?, status: String?, completion: @escaping (Result<[Characters], Error>) -> Void){
+    func getCharacters(page: String? = "1", name: String?, status: String?, completion: @escaping (Result<[Characters], NetworkError>) -> Void){
         ApiRequests().getCharacters(page: page, name: name, status: status) { result in
             DispatchQueue.main.async{
                 completion(result)

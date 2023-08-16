@@ -26,6 +26,12 @@ class CharactersViewController: UIViewController, ViewCode {
         return view
     }()
     
+    lazy var errorComponent : ServiceErrorComponent = {
+        let view = ServiceErrorComponent()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var pageList : PageListComponent = {
         let view = PageListComponent()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +77,7 @@ class CharactersViewController: UIViewController, ViewCode {
     func setupClicks(){
         pageDescription.filterBtn.addTarget(self, action: #selector(goToFilter), for: .touchUpInside)
         pageList.refresher.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        errorComponent.retryButton.addTarget(self, action: #selector(refreshList), for: .touchUpInside)
         charactersCollectionDataSource.didClick = {
             character in
             self.viewModel.goToDetails(character: character)
@@ -94,13 +101,16 @@ class CharactersViewController: UIViewController, ViewCode {
     }
     
     func scrollToTop() {
-        let indexPath = IndexPath(item: 0, section: 0)
-        pageList.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        if !pageList.collectionView.isHidden {
+            let indexPath = IndexPath(item: 0, section: 0)
+            pageList.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
     }
 
     func setupView() {
         self.view.addSubview(bannerContent)
         self.view.addSubview(pageDescription)
+        self.view.addSubview(errorComponent)
         self.view.addSubview(pageList)
     }
     
@@ -114,6 +124,11 @@ class CharactersViewController: UIViewController, ViewCode {
             pageDescription.topAnchor.constraint(equalTo: self.bannerContent.bottomAnchor, constant: 20),
             pageDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             pageDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            errorComponent.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor),
+            errorComponent.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            errorComponent.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            errorComponent.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
             pageList.topAnchor.constraint(equalTo: self.pageDescription.bottomAnchor, constant: 20),
             pageList.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
@@ -130,6 +145,11 @@ class CharactersViewController: UIViewController, ViewCode {
             pageDescription.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             pageDescription.leadingAnchor.constraint(equalTo: bannerContent.trailingAnchor, constant: 20),
             pageDescription.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            
+            errorComponent.topAnchor.constraint(equalTo: pageDescription.bottomAnchor),
+            errorComponent.leadingAnchor.constraint(equalTo: bannerContent.trailingAnchor, constant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.05),
+            errorComponent.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -(max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.05)),
+            errorComponent.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
             pageList.topAnchor.constraint(equalTo: pageDescription.bottomAnchor, constant: 20),
             pageList.leadingAnchor.constraint(equalTo: bannerContent.trailingAnchor, constant: max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)  * 0.05),
@@ -149,6 +169,13 @@ extension CharactersViewController : CharactersViewModelDelegate {
         pageList.startRefresher()
     }
     
+    func showError(message: String) {
+        errorComponent.messageLabel.text = message
+        errorComponent.isHidden = false
+        errorComponent.retryButton.isHidden = false
+        pageList.isHidden = true
+    }
+    
     func updateFooterMessage(message: String) {
         if let footerView = pageList.collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionFooter, at: IndexPath(item: 0, section: 0)) as? ServiceMessageComponent {
             footerView.messageLabel.text = message
@@ -156,6 +183,9 @@ extension CharactersViewController : CharactersViewModelDelegate {
     }
     
     func updateCharacterData(characters: [Characters]){
+        pageList.isHidden = false
+        errorComponent.isHidden = true
+        errorComponent.retryButton.isHidden = true
         charactersCollectionDataSource.reloadCollectionView(with: characters)
         pageList.stopRefresher()
         pageList.collectionView.reloadData()

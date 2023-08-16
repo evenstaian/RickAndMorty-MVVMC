@@ -75,7 +75,7 @@ class CharactersServiceSpy : CharactersServicing {
     
     private(set) var didCalledGetCharacters = false
     
-    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping (Result<[Characters], Error>) -> Void) {
+    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping (Result<[Characters], NetworkError>) -> Void) {
         didCalledGetCharacters = true
     }
 }
@@ -102,6 +102,7 @@ class CharactersCoordinatorSpy : CharactersCoordinating {
 
 class CharactersViewModelDelegateSpy : NSObject, CharactersViewModelDelegate {
     private(set) var didCalledShowProgress = false
+    private(set) var didCalledShowError = false
     private(set) var didCalledUpdateFooterMessage = false
     private(set) var didCalledUpdateCharacterData = false
     private(set) var didCalledSearchCharacter = false
@@ -116,6 +117,11 @@ class CharactersViewModelDelegateSpy : NSObject, CharactersViewModelDelegate {
     func showProgress() {
         didCalledShowProgress = true
     }
+    
+    func showError(message: String) {
+        didCalledShowError = true
+    }
+    
     func updateFooterMessage(message: String) {
         didCalledUpdateFooterMessage = true
     }

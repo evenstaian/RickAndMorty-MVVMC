@@ -53,6 +53,7 @@
 		D6BCE3FE2A8C2368009D149E /* CharacterFilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3FD2A8C2368009D149E /* CharacterFilterViewModelTests.swift */; };
 		D6BCE4082A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE4072A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift */; };
 		D6BCE4102A8C2EDF009D149E /* CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE40F2A8C2EDF009D149E /* CharactersUITests.swift */; };
+		D6BCE4132A8C6D53009D149E /* ServiceErrorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE4122A8C6D53009D149E /* ServiceErrorComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		D6BCE4032A8C2E74009D149E /* EvensTaianStoneChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvensTaianStoneChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BCE4072A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvensTaianStoneChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D6BCE40F2A8C2EDF009D149E /* CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersUITests.swift; sourceTree = "<group>"; };
+		D6BCE4122A8C6D53009D149E /* ServiceErrorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceErrorComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				D6BCE3B42A86CC87009D149E /* BannerContent.swift */,
 				D6BCE3B62A86D022009D149E /* PageDescriptionComponent.swift */,
 				D6BCE3BF2A8717BC009D149E /* PageListComponent.swift */,
+				D6BCE4122A8C6D53009D149E /* ServiceErrorComponent.swift */,
 				D6BCE3E72A89A70E009D149E /* ServiceMessageComponent.swift */,
 			);
 			path = Components;
@@ -320,7 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				D6BCE3E42A8979C3009D149E /* Model */,
-				D6BCE3E32A896A91009D149E /* Service */,
 				D6BCE3DE2A894AE3009D149E /* API */,
 				D6BCE3BC2A87161A009D149E /* Cache */,
 			);
@@ -388,13 +390,6 @@
 				D6BCE3E12A894B86009D149E /* ApiRequests.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		D6BCE3E32A896A91009D149E /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		D6BCE3E42A8979C3009D149E /* Model */ = {
@@ -588,6 +583,7 @@
 				D6BCE3E82A89A70E009D149E /* ServiceMessageComponent.swift in Sources */,
 				D6BCE3D42A880A10009D149E /* DetailsHeaderComponent.swift in Sources */,
 				D6BCE3E22A894B86009D149E /* ApiRequests.swift in Sources */,
+				D6BCE4132A8C6D53009D149E /* ServiceErrorComponent.swift in Sources */,
 				D6BCE3972A85F2C1009D149E /* CharacterDetailsViewController.swift in Sources */,
 				D6BCE38D2A85C8EC009D149E /* CharactersCoordinator.swift in Sources */,
 				D6BCE3C92A8739A7009D149E /* CharacterFilterFactory.swift in Sources */,

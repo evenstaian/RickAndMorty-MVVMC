@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SystemConfiguration
 
 struct CharactersModelResponse : Decodable {
     let results: [Characters]
@@ -15,6 +16,11 @@ enum ParamsType: String {
     case page = "page"
     case name = "name"
     case status = "status"
+}
+
+enum NetworkError : Error {
+    case notFound
+    case noConnection
 }
 
 class ApiRequests {
@@ -32,7 +38,7 @@ class ApiRequests {
     }
     
     
-    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping(Result<[Characters], Error>) -> Void) {
+    func getCharacters(page: String?, name: String?, status: String?, completion: @escaping(Result<[Characters], NetworkError>) -> Void) {
         
         let url = "\(ApiConstants.baseURL)character"
         var request = URLRequest(url: URL(string: url)!)
@@ -68,13 +74,43 @@ class ApiRequests {
                         completion(.success(charactersResponse.results))
                     }
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(.notFound))
                 }
             }else{
-                completion(.failure(error!))
+                if !NetworkReachability.isConnectedToNetwork() {
+                    completion(.failure(.noConnection))
+                } else {
+                    completion(.failure(.notFound))
+                }
             }
         }
         
         dataTask.resume()
+    }
+}
+
+class NetworkReachability {
+    static func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return isReachable && !needsConnection
     }
 }
