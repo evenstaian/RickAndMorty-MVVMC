@@ -46,6 +46,7 @@ class CharactersViewController: UIViewController, ViewCode {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundColor
+        self.navigationController?.navigationBar.tintColor = .white
         self.viewModel.delegate = self
         self.viewModel.viewDidLoad()
         setupView()

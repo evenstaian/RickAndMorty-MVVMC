@@ -208,6 +208,7 @@
 				D6BCE3C12A87196C009D149E /* CharacteresCollectionView */,
 				D6BCE39F2A86A363009D149E /* Components */,
 				D6BCE3882A85C84E009D149E /* CharactersViewController.swift */,
+				D6BCE3DC2A885752009D149E /* CharactersService.swift */,
 				D6BCE38A2A85C86C009D149E /* CharactersViewModel.swift */,
 				D6BCE38C2A85C8EC009D149E /* CharactersCoordinator.swift */,
 				D6BCE38E2A85C97E009D149E /* CharactersFactory.swift */,
@@ -392,7 +393,6 @@
 		D6BCE3E32A896A91009D149E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				D6BCE3DC2A885752009D149E /* CharactersService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

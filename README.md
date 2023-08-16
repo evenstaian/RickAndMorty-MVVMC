@@ -60,3 +60,6 @@ class CharacterViewModel {
 </pre>
 
 A viewModel não espera pela implementação concreta, e sim pela abstração dela, representada pelo protocol _CharactersServicing_. Isso permite que uma eventual manutenção aconteça sem que a view model seja drasticamente afetada. E no contexto de testes, permite criar _Spies_ que possam criar implementações especificas ao testar o sut.
+### Suporte a Orientação de tela
+
+<img src="./readmeResources/images/orientation.gif" width="600" height="auto"/>
