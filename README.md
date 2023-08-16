@@ -8,3 +8,6 @@ Neste projeto escolhi o __MVVM-C__ como padrão de arquitetura, isso me permitiu
 -  Liskov Substitution (Princípio da substituição de Liskov)
 -  Interface Segregation (Princípio da Segregação da Interface)
 -  Dependency Inversion (Princípio da inversão da dependência)
+
+Figma
+![Figma](./readmeResources/images/figma.png)
