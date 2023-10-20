@@ -7,7 +7,7 @@
 
 import XCTest
 
-class EvensTaianStoneChallengeUITestsLaunchTests: XCTestCase {
+class EvensTaianRickAndMortyUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

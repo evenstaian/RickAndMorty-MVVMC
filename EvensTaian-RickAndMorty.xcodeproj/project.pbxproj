@@ -51,7 +51,7 @@
 		D6BCE3F92A8C0680009D149E /* CharacterDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3F82A8C067F009D149E /* CharacterDetailsViewModelTests.swift */; };
 		D6BCE3FC2A8C0EB3009D149E /* CharacterDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3FB2A8C0EB3009D149E /* CharacterDetailsService.swift */; };
 		D6BCE3FE2A8C2368009D149E /* CharacterFilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE3FD2A8C2368009D149E /* CharacterFilterViewModelTests.swift */; };
-		D6BCE4082A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE4072A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift */; };
+		D6BCE4082A8C2E74009D149E /* EvensTaian-RickAndMortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE4072A8C2E74009D149E /* EvensTaian-RickAndMortyUITestsLaunchTests.swift */; };
 		D6BCE4102A8C2EDF009D149E /* CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE40F2A8C2EDF009D149E /* CharactersUITests.swift */; };
 		D6BCE4132A8C6D53009D149E /* ServiceErrorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE4122A8C6D53009D149E /* ServiceErrorComponent.swift */; };
 /* End PBXBuildFile section */
@@ -74,7 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D6BCE36D2A85C60E009D149E /* EvensTaianStoneChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EvensTaianStoneChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BCE36D2A85C60E009D149E /* EvensTaian-RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EvensTaian-RickAndMorty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BCE3702A85C60E009D149E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BCE3792A85C612009D149E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6BCE37C2A85C612009D149E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		D6BCE39A2A85F350009D149E /* CharacterDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsCoordinator.swift; sourceTree = "<group>"; };
 		D6BCE39C2A85FF84009D149E /* CharactersViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelDelegate.swift; sourceTree = "<group>"; };
 		D6BCE3A42A86A439009D149E /* CharactersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelTests.swift; sourceTree = "<group>"; };
-		D6BCE3AA2A86A4B6009D149E /* EvensTaianStoneChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvensTaianStoneChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BCE3AA2A86A4B6009D149E /* EvensTaian-RickAndMortyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EvensTaian-RickAndMortyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BCE3B42A86CC87009D149E /* BannerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerContent.swift; sourceTree = "<group>"; };
 		D6BCE3B62A86D022009D149E /* PageDescriptionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDescriptionComponent.swift; sourceTree = "<group>"; };
 		D6BCE3B92A86D89E009D149E /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 		D6BCE3F82A8C067F009D149E /* CharacterDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		D6BCE3FB2A8C0EB3009D149E /* CharacterDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsService.swift; sourceTree = "<group>"; };
 		D6BCE3FD2A8C2368009D149E /* CharacterFilterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterViewModelTests.swift; sourceTree = "<group>"; };
-		D6BCE4032A8C2E74009D149E /* EvensTaianStoneChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvensTaianStoneChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6BCE4072A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvensTaianStoneChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D6BCE4032A8C2E74009D149E /* EvensTaian-RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EvensTaian-RickAndMortyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BCE4072A8C2E74009D149E /* EvensTaian-RickAndMortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EvensTaian-RickAndMortyUITestsLaunchTests.swift"; sourceTree = "<group>"; };
 		D6BCE40F2A8C2EDF009D149E /* CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersUITests.swift; sourceTree = "<group>"; };
 		D6BCE4122A8C6D53009D149E /* ServiceErrorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceErrorComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,9 +155,9 @@
 		D6BCE3642A85C60E009D149E = {
 			isa = PBXGroup;
 			children = (
-				D6BCE36F2A85C60E009D149E /* EvensTaianStoneChallenge */,
-				D6BCE3AB2A86A4B6009D149E /* EvensTaianStoneChallengeTests */,
-				D6BCE4042A8C2E74009D149E /* EvensTaianStoneChallengeUITests */,
+				D6BCE36F2A85C60E009D149E /* EvensTaian-RickAndMorty */,
+				D6BCE3AB2A86A4B6009D149E /* EvensTaian-RickAndMortyTests */,
+				D6BCE4042A8C2E74009D149E /* EvensTaian-RickAndMortyUITests */,
 				D6BCE36E2A85C60E009D149E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -165,14 +165,14 @@
 		D6BCE36E2A85C60E009D149E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6BCE36D2A85C60E009D149E /* EvensTaianStoneChallenge.app */,
-				D6BCE3AA2A86A4B6009D149E /* EvensTaianStoneChallengeTests.xctest */,
-				D6BCE4032A8C2E74009D149E /* EvensTaianStoneChallengeUITests.xctest */,
+				D6BCE36D2A85C60E009D149E /* EvensTaian-RickAndMorty.app */,
+				D6BCE3AA2A86A4B6009D149E /* EvensTaian-RickAndMortyTests.xctest */,
+				D6BCE4032A8C2E74009D149E /* EvensTaian-RickAndMortyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6BCE36F2A85C60E009D149E /* EvensTaianStoneChallenge */ = {
+		D6BCE36F2A85C60E009D149E /* EvensTaian-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
 				D6BCE3BB2A871613009D149E /* Networking */,
@@ -183,7 +183,7 @@
 				D6BCE3F32A8B41B2009D149E /* Utils */,
 				D6BCE37E2A85C612009D149E /* Info.plist */,
 			);
-			path = EvensTaianStoneChallenge;
+			path = "EvensTaian-RickAndMorty";
 			sourceTree = "<group>";
 		};
 		D6BCE3842A85C718009D149E /* Application */ = {
@@ -303,12 +303,12 @@
 			path = CharacterDetailsTests;
 			sourceTree = "<group>";
 		};
-		D6BCE3AB2A86A4B6009D149E /* EvensTaianStoneChallengeTests */ = {
+		D6BCE3AB2A86A4B6009D149E /* EvensTaian-RickAndMortyTests */ = {
 			isa = PBXGroup;
 			children = (
 				D6BCE3A12A86A3D7009D149E /* Scenes */,
 			);
-			path = EvensTaianStoneChallengeTests;
+			path = "EvensTaian-RickAndMortyTests";
 			sourceTree = "<group>";
 		};
 		D6BCE3B82A86D88E009D149E /* Colors */ = {
@@ -424,13 +424,13 @@
 			path = CharacterFilter;
 			sourceTree = "<group>";
 		};
-		D6BCE4042A8C2E74009D149E /* EvensTaianStoneChallengeUITests */ = {
+		D6BCE4042A8C2E74009D149E /* EvensTaian-RickAndMortyUITests */ = {
 			isa = PBXGroup;
 			children = (
 				D6BCE40E2A8C2EB5009D149E /* Scenes */,
-				D6BCE4072A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift */,
+				D6BCE4072A8C2E74009D149E /* EvensTaian-RickAndMortyUITestsLaunchTests.swift */,
 			);
-			path = EvensTaianStoneChallengeUITests;
+			path = "EvensTaian-RickAndMortyUITests";
 			sourceTree = "<group>";
 		};
 		D6BCE40E2A8C2EB5009D149E /* Scenes */ = {
@@ -452,9 +452,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D6BCE36C2A85C60E009D149E /* EvensTaianStoneChallenge */ = {
+		D6BCE36C2A85C60E009D149E /* EvensTaian-RickAndMorty */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6BCE3812A85C612009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallenge" */;
+			buildConfigurationList = D6BCE3812A85C612009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMorty" */;
 			buildPhases = (
 				D6BCE3692A85C60E009D149E /* Sources */,
 				D6BCE36A2A85C60E009D149E /* Frameworks */,
@@ -464,14 +464,14 @@
 			);
 			dependencies = (
 			);
-			name = EvensTaianStoneChallenge;
+			name = "EvensTaian-RickAndMorty";
 			productName = EvensTaianStoneChallenge;
-			productReference = D6BCE36D2A85C60E009D149E /* EvensTaianStoneChallenge.app */;
+			productReference = D6BCE36D2A85C60E009D149E /* EvensTaian-RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D6BCE3A92A86A4B6009D149E /* EvensTaianStoneChallengeTests */ = {
+		D6BCE3A92A86A4B6009D149E /* EvensTaian-RickAndMortyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6BCE3B02A86A4B6009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallengeTests" */;
+			buildConfigurationList = D6BCE3B02A86A4B6009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMortyTests" */;
 			buildPhases = (
 				D6BCE3A62A86A4B6009D149E /* Sources */,
 				D6BCE3A72A86A4B6009D149E /* Frameworks */,
@@ -482,14 +482,14 @@
 			dependencies = (
 				D6BCE3AF2A86A4B6009D149E /* PBXTargetDependency */,
 			);
-			name = EvensTaianStoneChallengeTests;
+			name = "EvensTaian-RickAndMortyTests";
 			productName = EvensTaianStoneChallengeTests;
-			productReference = D6BCE3AA2A86A4B6009D149E /* EvensTaianStoneChallengeTests.xctest */;
+			productReference = D6BCE3AA2A86A4B6009D149E /* EvensTaian-RickAndMortyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D6BCE4022A8C2E74009D149E /* EvensTaianStoneChallengeUITests */ = {
+		D6BCE4022A8C2E74009D149E /* EvensTaian-RickAndMortyUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6BCE40B2A8C2E74009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallengeUITests" */;
+			buildConfigurationList = D6BCE40B2A8C2E74009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMortyUITests" */;
 			buildPhases = (
 				D6BCE3FF2A8C2E74009D149E /* Sources */,
 				D6BCE4002A8C2E74009D149E /* Frameworks */,
@@ -500,9 +500,9 @@
 			dependencies = (
 				D6BCE40A2A8C2E74009D149E /* PBXTargetDependency */,
 			);
-			name = EvensTaianStoneChallengeUITests;
+			name = "EvensTaian-RickAndMortyUITests";
 			productName = EvensTaianStoneChallengeUITests;
-			productReference = D6BCE4032A8C2E74009D149E /* EvensTaianStoneChallengeUITests.xctest */;
+			productReference = D6BCE4032A8C2E74009D149E /* EvensTaian-RickAndMortyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -528,7 +528,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D6BCE3682A85C60E009D149E /* Build configuration list for PBXProject "EvensTaianStoneChallenge" */;
+			buildConfigurationList = D6BCE3682A85C60E009D149E /* Build configuration list for PBXProject "EvensTaian-RickAndMorty" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -541,9 +541,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D6BCE36C2A85C60E009D149E /* EvensTaianStoneChallenge */,
-				D6BCE3A92A86A4B6009D149E /* EvensTaianStoneChallengeTests */,
-				D6BCE4022A8C2E74009D149E /* EvensTaianStoneChallengeUITests */,
+				D6BCE36C2A85C60E009D149E /* EvensTaian-RickAndMorty */,
+				D6BCE3A92A86A4B6009D149E /* EvensTaian-RickAndMortyTests */,
+				D6BCE4022A8C2E74009D149E /* EvensTaian-RickAndMortyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -636,7 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6BCE4082A8C2E74009D149E /* EvensTaianStoneChallengeUITestsLaunchTests.swift in Sources */,
+				D6BCE4082A8C2E74009D149E /* EvensTaian-RickAndMortyUITestsLaunchTests.swift in Sources */,
 				D6BCE4102A8C2EDF009D149E /* CharactersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,12 +646,12 @@
 /* Begin PBXTargetDependency section */
 		D6BCE3AF2A86A4B6009D149E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D6BCE36C2A85C60E009D149E /* EvensTaianStoneChallenge */;
+			target = D6BCE36C2A85C60E009D149E /* EvensTaian-RickAndMorty */;
 			targetProxy = D6BCE3AE2A86A4B6009D149E /* PBXContainerItemProxy */;
 		};
 		D6BCE40A2A8C2E74009D149E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D6BCE36C2A85C60E009D149E /* EvensTaianStoneChallenge */;
+			target = D6BCE36C2A85C60E009D149E /* EvensTaian-RickAndMorty */;
 			targetProxy = D6BCE4092A8C2E74009D149E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -859,7 +859,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvensTaianStoneChallenge.app/EvensTaianStoneChallenge";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvensTaian-RickAndMorty.app/EvensTaian-RickAndMorty";
 			};
 			name = Debug;
 		};
@@ -882,7 +882,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvensTaianStoneChallenge.app/EvensTaianStoneChallenge";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvensTaian-RickAndMorty.app/EvensTaian-RickAndMorty";
 			};
 			name = Release;
 		};
@@ -933,7 +933,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6BCE3682A85C60E009D149E /* Build configuration list for PBXProject "EvensTaianStoneChallenge" */ = {
+		D6BCE3682A85C60E009D149E /* Build configuration list for PBXProject "EvensTaian-RickAndMorty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCE37F2A85C612009D149E /* Debug */,
@@ -942,7 +942,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6BCE3812A85C612009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallenge" */ = {
+		D6BCE3812A85C612009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMorty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCE3822A85C612009D149E /* Debug */,
@@ -951,7 +951,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6BCE3B02A86A4B6009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallengeTests" */ = {
+		D6BCE3B02A86A4B6009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMortyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCE3B12A86A4B6009D149E /* Debug */,
@@ -960,7 +960,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6BCE40B2A8C2E74009D149E /* Build configuration list for PBXNativeTarget "EvensTaianStoneChallengeUITests" */ = {
+		D6BCE40B2A8C2E74009D149E /* Build configuration list for PBXNativeTarget "EvensTaian-RickAndMortyUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCE40C2A8C2E74009D149E /* Debug */,
